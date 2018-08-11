@@ -22,19 +22,21 @@ class Client {
         this._cookies = {}
     }
 
-    async login() {
+    login() {
         // One-off internal call to save the user's session cookies
-        const { headers } = await this._call('POST', 'login', {
+        return this._call('POST', 'login', {
             data: {
                 username: this.opts.username,
                 password: this.opts.password
             }
         })
-        headers['set-cookie'].forEach(str => {
-            const cookieObj = cookie.parse(str)
-            const key = Object.keys(cookieObj)[0]
-            this._cookies[key] = cookieObj[key]
-        })
+            .then(({ headers }) => {
+                headers['set-cookie'].forEach(str => {
+                    const cookieObj = cookie.parse(str)
+                    const key = Object.keys(cookieObj)[0]
+                    this._cookies[key] = cookieObj[key]
+                })
+            })
     }
 
     _call(method, path, options = {}) {
@@ -50,12 +52,6 @@ class Client {
             params: { uhash: this._cookies.ntuserrem },
             data
         })
-            .catch(() => ({
-                data: {
-                    success: false,
-                    data: null
-                }
-            }))
     }
 
     get(path, options) {
