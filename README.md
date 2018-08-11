@@ -20,8 +20,9 @@ const client = nitrotype({ username: '<YOUR_USERNAME_HERE>', password: '<YOUR_PA
 
 ;(async () => {
     await client.login()
-    const { data: { data } } = await client.get('settings')
-    console.log(data)
+    const res = await client.get('settings')
+    console.log(res)
+    // Output: { success: true, data: { … } }
 })()
 ```
 
