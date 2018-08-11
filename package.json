@@ -1,0 +1,14 @@
+{
+    "name": "nitrotype",
+    "version": "1.0.0",
+    "description": "Client for the unofficial Nitro Type API.",
+    "main": "./index.js",
+    "repository": "https://github.com/ifvictr/nitrotype.js",
+    "author": "Victor Truong <me@ifvictr.com>",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "cookie": "^0.3.1",
+        "qs": "^6.5.2"
+    }
+}
