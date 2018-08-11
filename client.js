@@ -3,7 +3,7 @@ const cookie = require('cookie')
 const qs = require('qs')
 
 const serializeCookies = obj => Object.entries(obj)
-    .reduce((str, [key, value]) => `${str}; ${cookie.serialize(key, value)}`, '')
+    .reduce((str, [key, value]) => `${str} ${cookie.serialize(key, value)};`, '')
 
 const BASE_URL = 'https://www.nitrotype.com/api/'
 
