@@ -61,18 +61,6 @@ class Client {
     post(path, options) {
         return this._call('POST', path, options).then(res => res.data)
     }
-
-    put(path, options) {
-        return this._call('PUT', path, options).then(res => res.data)
-    }
-
-    patch(path, options) {
-        return this._call('PATCH', path, options).then(res => res.data)
-    }
-
-    delete(path, options) {
-        return this._call('DELETE', path, options).then(res => res.data)
-    }
 }
 
 module.exports = Client
