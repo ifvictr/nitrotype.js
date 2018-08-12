@@ -22,6 +22,21 @@ class Client {
         this._cookies = {}
     }
 
+    _call(method, path, options = {}) {
+        const data = typeof options.data === 'object'
+            ? qs.stringify(options.data)
+            : options.data
+        return axios({
+            ...options,
+            method,
+            baseURL: BASE_URL,
+            url: path,
+            headers: { Cookie: serializeCookies(this._cookies) },
+            params: { uhash: this._cookies.ntuserrem },
+            data
+        })
+    }
+
     login() {
         // One-off internal call to save the user's session cookies
         return this._call('POST', 'login', {
@@ -37,21 +52,6 @@ class Client {
                     this._cookies[key] = cookieObj[key]
                 })
             })
-    }
-
-    _call(method, path, options = {}) {
-        const data = typeof options.data === 'object'
-            ? qs.stringify(options.data)
-            : options.data
-        return axios({
-            ...options,
-            method,
-            baseURL: BASE_URL,
-            url: path,
-            headers: { Cookie: serializeCookies(this._cookies) },
-            params: { uhash: this._cookies.ntuserrem },
-            data
-        })
     }
 
     get(path, options) {
