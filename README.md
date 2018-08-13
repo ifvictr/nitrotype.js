@@ -108,6 +108,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically by the library.
 
 - `GET teams/applications`
 - `POST teams/search`: invites
+- `POST teams/status`: status
 - `GET teams/<teamId>`
 - `POST teams/<teamId>/accept-invite`
 - `POST teams/<teamId>/apply`
