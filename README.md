@@ -26,6 +26,13 @@ const client = nitrotype({ username: '<YOUR_USERNAME_HERE>', password: '<YOUR_PA
 })()
 ```
 
+## Methods
+
+- `Client#get(path[, options])`
+- `Client#post(path[, options])`
+
+`options` should be an object that contains a `data` object (for POST requests) and/or a `params` object (for URL parameters).
+
 ## Endpoints
 
 The base API url (`https://nitrotype.com/api/`) is automatically by the library. It will work even if you pass in just the endpoint. If you find an endpoint that isn't already documented below, please don't hesitate to open a pull request!
