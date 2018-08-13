@@ -12,7 +12,7 @@ $ npm install nitrotype --save
 
 ## Usage
 
-The following code snippet demonstrates how to retrieve a user's account settings using this library:
+The following example shows how to claim the daily reward:
 
 ```js
 const nitrotype = require('nitrotype')
@@ -20,9 +20,9 @@ const client = nitrotype({ username: '<YOUR_USERNAME_HERE>', password: '<YOUR_PA
 
 ;(async () => {
     await client.login()
-    const res = await client.get('settings')
+    const res = await client.get('rewards/daily')
     console.log(res)
-    // Output: { success: true, data: { … } }
+    // Output: { success: true, data: { reward: true, next: 75600, type: 'money', value: 30000 } }
 })()
 ```
 
