@@ -23,17 +23,20 @@ class Client {
     }
 
     _call(method, path, options = {}) {
-        const data = typeof options.data === 'object'
-            ? qs.stringify(options.data)
-            : options.data
+        const uhash = this._cookies.ntuserrem
+        const params = typeof options.params === 'object' ? options.params : {}
+        const data = typeof options.data === 'object' ? options.data : {}
+
         return axios({
-            ...options,
             method,
             baseURL: BASE_URL,
             url: path,
             headers: { Cookie: serializeCookies(this._cookies) },
-            params: { uhash: this._cookies.ntuserrem },
-            data
+            params: { uhash, ...params },
+            data: method === "POST" && qs.stringify({
+                uhash,
+                ...data
+            })
         })
     }
 
