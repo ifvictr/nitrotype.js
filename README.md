@@ -73,6 +73,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically by the library.
 
 ### Players
 
+- `GET players/<userId>`
 - `POST players-search`: term
 
 ### Purchase
