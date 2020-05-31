@@ -20,7 +20,7 @@ const client = nitrotype({ username: '<YOUR_USERNAME_HERE>', password: '<YOUR_PA
 
 ;(async () => {
     await client.login()
-    const res = await client.get('rewards/daily')
+    const res = await client.post('rewards/daily')
     console.log(res)
     // Output: { success: true, data: { reward: true, next: 75600, type: 'money', value: 30000 } }
 })()
