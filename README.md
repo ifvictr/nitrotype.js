@@ -45,7 +45,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 ### Authentication
 
 - `POST auth/autologin`: id, token
-- `GET auth/facebook`: 
+- `GET auth/facebook`
 - `POST auth/validate-email`: hash, userID
 - `POST login`: password, username
 - `POST logout`
