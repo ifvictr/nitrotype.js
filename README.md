@@ -20,7 +20,7 @@ const client = nitrotype({ username: '<YOUR_USERNAME_HERE>', password: '<YOUR_PA
 
 ;(async () => {
     await client.login()
-    const res = await client.get('rewards/daily')
+    const res = await client.post('rewards/daily')
     console.log(res)
     // Output: { success: true, data: { reward: true, next: 75600, type: 'money', value: 30000 } }
 })()
@@ -59,7 +59,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST cars/<carId>/paint`: angle, carID, password
 - `POST cars/<carId>/sell`: carID, password
 - `POST cars/<carId>/use`
-- `POST cars/arrange`: garage
+- `POST cars-arrange`: garage
 
 ### Friends
 
@@ -75,7 +75,8 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 
 ### Items
 
-- `GET items/cash-gifts`
+- `POST items/cash-gifts`
+- `POST items/equip-loot`: lootID, type
 
 ### News
 
@@ -85,6 +86,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST news-comments/<commentId>/delete`
 - `POST news-comments/<commentId>/delete-and-moderate`
 - `POST news-comments/<commentId>/edit`: comment
+- `GET news`
 
 ### Nitros
 
@@ -103,6 +105,8 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST purchase`: product, purchaseFor, purchaseForUsername
 - `POST purchase/cash`: product, purchaseFor, purchaseForUsername
 - `POST purchase/upgrade`: product, purchaseFor, purchaseForUsername
+- `GET purchase/refreshsession`
+- `POST purchase/stripesession`: product, purchaseFor, purchaseForUsername, purchaseMode
 
 ### Race
 
@@ -112,6 +116,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `GET race/practice-lesson`
 - `POST race/problem-keys`: ak (all keys), ek (error keys)
 - `POST race/save-qualifying`: carID, speed
+- `POST race/challenge`: wins, seconds, lessonID
 
 ### Referrals
 
@@ -120,7 +125,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 
 ### Rewards
 
-- `GET rewards/daily`
+- `POST rewards/daily`
 
 ### Scoreboard
 
@@ -139,6 +144,8 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST settings/sounds`: value
 - `POST settings/survey`: field, value
 - `POST settings/verify-email`
+- `POST settings/username`: username
+- `POST settings/world`: worldID
 
 ### Stats
 
@@ -171,6 +178,10 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST team-requests/deny-all`
 - `POST team-requests/<userId>/accept`
 - `POST team-requests/<userId>/deny`
+
+### Classes
+
+- `GET classes`
 
 ### Miscellaneous
 
