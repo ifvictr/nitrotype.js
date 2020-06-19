@@ -39,22 +39,20 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 
 ### Achievements
 
-- `GET achievements`
 - `POST achievements/check`: ids
 - `GET achievements/claim/id/<achievementId>`
 
 ### Authentication
 
-- `POST auth/autologin`: id
-- `GET auth/facebook`
-- `POST auth/validate-email`
+- `POST auth/autologin`: id, token
+- `GET auth/facebook`: 
+- `POST auth/validate-email`: hash, userID
 - `POST login`: password, username
 - `POST logout`
 - `POST register`: acceptPolicy, email, password, receiveContact, username
 
 ### Cars
 
-- `GET cars`
 - `POST cars/<carId>/buy`: carID, password
 - `POST cars/<carId>/paint`: angle, carID, password
 - `POST cars/<carId>/sell`: carID, password
@@ -66,7 +64,7 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `GET friends`
 - `POST friends/<userId>/delete`
 - `POST friends/<userId>/request`
-- `POST friends/<userId>/sendcash`: amount, password
+- `POST friends/<userId>/sendcash`: amount, password, playersCash, recipient, feePercent
 - `GET friend-requests`
 - `POST friend-requests/accept-all`
 - `POST friend-requests/deny-all`
@@ -80,18 +78,8 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 
 ### News
 
-- `POST news/<newsId>/comment`: comment, newsId
-- `GET news/<newsId>/unapproved`
-- `POST news-comments/<commentId>/approve`
-- `POST news-comments/<commentId>/delete`
-- `POST news-comments/<commentId>/delete-and-moderate`
-- `POST news-comments/<commentId>/edit`: comment
 - `GET news`
-
-### Nitros
-
-- `POST buy-nitros`: password, quantity
-- `POST sell-nitros`: password, quantity
+- `GET news/<newsId>`
 
 ### Players
 
@@ -103,8 +91,6 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 ### Purchase
 
 - `POST purchase`: product, purchaseFor, purchaseForUsername
-- `POST purchase/cash`: product, purchaseFor, purchaseForUsername
-- `POST purchase/upgrade`: product, purchaseFor, purchaseForUsername
 - `GET purchase/refreshsession`
 - `POST purchase/stripesession`: product, purchaseFor, purchaseForUsername, purchaseMode
 
@@ -113,9 +99,8 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `GET race/<raceId>`
 - `POST race/log-dq`: id, msg, logs, type
 - `POST race/log-practice`: errors, secs, typed
-- `GET race/practice-lesson`
 - `POST race/problem-keys`: ak (all keys), ek (error keys)
-- `POST race/save-qualifying`: carID, speed
+- `POST race/save-qualifying`: speed, accuracy, carID, raceSounds
 - `POST race/challenge`: wins, seconds, lessonID
 
 ### Referrals
@@ -134,15 +119,13 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 ### Settings
 
 - `GET settings`
-- `POST settings/account`: birthYear, contact, email, firstName, lastName, password
+- `POST settings/account`: contact, email, firstName, lastName, password
 - `POST settings/bugs`: action, description, page
 - `POST settings/fpscache`: dq, error, errorMessage, errorStack, forceEarlyPlace, fps, perfTestFps, position, raceID, racerRenderDelay, renderer, socket, webglSupport
 - `POST settings/password`: newPassword, newPassword2, password
-- `POST settings/profile`: country, displayName, gender, title
-- `POST settings/sessionbug`: loggedIn, paid, player
-- `POST settings/social`: allowFriendRequests, lookingForTeam, offlineMode
+- `POST settings/profile`: country, displayName, titleID, title
+- `POST settings/social`: allowFriendRequests, lookingForTeam, offline
 - `POST settings/sounds`: value
-- `POST settings/survey`: field, value
 - `POST settings/verify-email`
 - `POST settings/username`: username
 - `POST settings/world`: worldID
@@ -164,9 +147,9 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 - `POST teams/delete`: password
 - `POST teams/leave`
 - `POST teams/motd`: message
-- `POST teams/search`: invites, minLevel, minSpeed, order, page, pageSize
+- `POST teams/search`: invites, level, speed
 - `POST teams/status`: status
-- `POST teams/update`: minLevel, minSpeed, name, otherRequirements, password, tag, tagColor
+- `POST teams/update`: minLevel, minSpeed, name, otherRequirements, password, tag, tagColor, enrollment, autoRemove
 - `GET teams/<teamId>`
 - `POST teams/<teamId>/accept-invite`
 - `POST teams/<teamId>/apply`
@@ -187,9 +170,27 @@ The base API url (`https://nitrotype.com/api/`) is automatically prepended by th
 
 - `POST contact`: body, email, name
 - `POST contact/refund`: amount, body, ccLast4, date, email, name, postalCode
-- `POST lostpass-change`: password, password2
+- `POST lostpass-change`: password, password2, userID, hash
 - `POST lostpass-send`: email
 - `POST support/account-help`: alt_email, captchaKey, email_type, firstname, lastname, login, other, username
+
+### Obsolete
+
+- `GET achievements`
+- `GET cars`
+- `POST news/<newsId>/comment`: comment, newsID
+- `GET news/<newsId>/unapproved`
+- `POST news-comments/<commentId>/approve`
+- `POST news-comments/<commentId>/delete`
+- `POST news-comments/<commentId>/delete-and-moderate`
+- `POST news-comments/<commentId>/edit`: comment
+- `POST buy-nitros`: password, quantity
+- `POST sell-nitros`: password, quantity
+- `POST purchase/cash`: product, purchaseFor, purchaseForUsername
+- `POST purchase/upgrade`: product, purchaseFor, purchaseForUsername
+- `GET race/practice-lesson`
+- `POST settings/sessionbug`: loggedIn, paid, player
+- `POST settings/survey`: field, value
 
 ## License
 
